@@ -15,7 +15,12 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
     // step-4: add number to set the total deposit
     const currentDepositTotal = previousDepositTotal + newDepositAmount;
     // set the deposit total
-    depositTotalElement.innerText = '' + currentDepositTotal;
+    if (currentDepositTotal > 0 && currentDepositTotal < 10) {
+        depositTotalElement.innerText = '0' + currentDepositTotal.toFixed(2);
+    }
+    else {
+        depositTotalElement.innerText = '' + currentDepositTotal.toFixed(2);
+    }
 
     // step-5: get ballance current total
     const balanceTotalElement = document.getElementById('balance-total');
@@ -25,7 +30,7 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
     // step-6: calculate current total balance
     const currentBalanceTotal = previousBalanceTotal + newDepositAmount;
     // set the balance total
-    balanceTotalElement.innerText = '' + currentBalanceTotal;
+    balanceTotalElement.innerText = '' + currentBalanceTotal.toFixed(2);
 
 
 

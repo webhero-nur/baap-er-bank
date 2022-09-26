@@ -12,7 +12,7 @@
  * step-6.a: set new total balance
  * step-7: clear the withdraw input field
  * 
- * error handle
+ * Error Handle
  * error-1: checking if balance is enough to perform withdraw
  * error-2: checking if the input is a number or not
  * error-3: checking if the input is a positive number or not
@@ -51,33 +51,23 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const newWithdrawTotalAmount = currentWithdrawTotal + newWithdrawAmount;
 
     // step-5:
-    const currentBalanceTotalElement = document.getElementById('balance-total');
-    const currentBalanceTotalString = currentBalanceTotalElement.innerText;
+    const previousBalanceTotalElement = document.getElementById('balance-total');
+    const previousBalanceTotalString = previousBalanceTotalElement.innerText;
     // step-5.a:
-    const currentBalanceTotal = parseFloat(currentBalanceTotalString);
+    const previousBalanceTotal = parseFloat(previousBalanceTotalString);
 
     // error-1:
-    if (newWithdrawTotalAmount > currentBalanceTotal) {
+    if (newWithdrawTotalAmount > previousBalanceTotal) {
         alert('Not enough balance');
         return;
     }
 
     // step-6:
-    const newCurrentBalanceTotal = currentBalanceTotal - newWithdrawAmount;
+    const currentBalanceTotal = previousBalanceTotal - newWithdrawAmount;
 
     // step-6.a:
-    if (newCurrentBalanceTotal > 0 && newCurrentBalanceTotal < 10) {
-        currentBalanceTotalElement.innerText = '0' + newCurrentBalanceTotal.toFixed(2);
-    }
-    else {
-        currentBalanceTotalElement.innerText = newCurrentBalanceTotal.toFixed(2);
-    }
+    previousBalanceTotalElement.innerText = currentBalanceTotal.toFixed(2);
 
     // step-4.a:
-    if (newWithdrawTotalAmount > 0 && newWithdrawTotalAmount < 10) {
-        currentWithdrawTotalElement.innerText = newWithdrawTotalAmount.toFixed(2);
-    }
-    else {
-        currentWithdrawTotalElement.innerText = newWithdrawTotalAmount.toFixed(2);
-    }
+    currentWithdrawTotalElement.innerText = newWithdrawTotalAmount.toFixed(2);
 });

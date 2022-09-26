@@ -14,9 +14,9 @@ document.getElementById('btn-submit').addEventListener('click', function () {
     // DANGER: DON NOT VERIFY email password on the client side
     // step-4: verify email and password
     if (email === 'nur@alo.com' && password === 'passcode') {
-        console.log('valid user');
+        location.href = 'bank.html';
     }
     else {
-        console.log('invalid user');
+        alert('invalid user');
     }
 });
